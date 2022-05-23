@@ -40,6 +40,11 @@ public class Gun : MonoBehaviour
         //사용할 컴포넌트의 참조 가져오기
     {
         bulletLineRenderer = GetComponent < LineRenderer>();
+        //GetComponet=가져오기
+        //bulletLineRenderer = GetComponentInChildren<LineRenderer>() = 자식의 안에 있는걸 가죠온다
+        //LineRenderer[] bulletLInerenderlers = GetComponent<LineRenderer>() //다수를 가져온다
+        //LineRenderer[] bulletLInerenderlers = GetComponentInChildren<LineRenderer>() //자식의 다수를 가져온다
+
         gunAudioPlayer = GetComponent<AudioSource>();
 
         //사용할 점을 두개로 변경
@@ -51,6 +56,10 @@ public class Gun : MonoBehaviour
     }
 
     private void OnEnable()
+        //컴포넌트 실행시 1번
+        //private void OnDisable()
+        ////컴포넌트 종료시 1번
+        
         // 총 상태 초기화
     {
         // 전체 예비 탄알 양을 초기화
@@ -114,6 +123,7 @@ public class Gun : MonoBehaviour
         }
             // 발사 이펙트 재생시작
             StartCoroutine(shotEffect(hitPosition));
+            //지연시간
 
             //남은 탄알 수를 -1
             magAmmo--;
@@ -137,7 +147,7 @@ public class Gun : MonoBehaviour
 
         // 총격 소리 재생
         gunAudioPlayer.PlayOneShot(gunData.shotClip);
-        //플레이어 온샷은 사운들르 중첩이 가능
+        //플레이어 온샷은 사운드를 중첩이 가능
 
         // 선의 시작점은 총구의 위치
         bulletLineRenderer.SetPosition(0, fireTransform.position);
@@ -147,6 +157,8 @@ public class Gun : MonoBehaviour
 
         // 라인 렌더러를 활성화하여 탄알 궤적을 그림
         bulletLineRenderer.enabled = true;
+        //게임 오브젝트는 Setactive
+        //컴포넌트는 enabled
 
         // 0.03초동안 잠시 처리를 대기
         yield return new WaitForSeconds(0.03f);
@@ -176,7 +188,14 @@ public class Gun : MonoBehaviour
     // 재장전 시도
     public bool Reload()
     {
-        return false;
+        if (state == State.Reloading || ammoRemain <= 0 || magAmmo >= gunData.magCapacity)
+        {
+            // 이미 재장전 중이거나 남은 탈알이 없거나
+            //탄창에 탄알이 이미 가득한 경우 재장전할 수 없음
+            return false;
+        }
+        StartCoroutine(ReloadRountine());
+        return true;    
     }
 
     // 실제 재장전 처리를 진행
