@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public interface IDamageable
 {
     void OnDamage(float damage, Vector3 hitpoint, Vector3 hitnormal);
-    //       µ¥¹ÌÁö µé¾î°¡´Â°÷  Ãæµ¹ÇÑ À§Ä¡°ªÀÌ µé¾î°¡´Â°÷   Ãæµ¹ÇÑ ¹æÇâ
+    //       ë°ë¯¸ì§€ ë“¤ì–´ê°€ëŠ”ê³³  ì¶©ëŒí•œ ìœ„ì¹˜ê°’ì´ ë“¤ì–´ê°€ëŠ”ê³³   ì¶©ëŒí•œ ë°©í–¥
 }

@@ -1,24 +1,24 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public string moveAxisName = "Vertical"; //¾ÕµÚ ¿òÁ÷ÀÓÀ» À§ÇÑ ÀÔ·ÂÃà ÀÌ¸§
-    public string rotareAxisName = "Horizontal"; //ÁÂ¿ì È¸ÀüÀ» À§ÇÑ ÀÔ·ÂÃà ÀÌ¸§
-    public string fireButtonName = "Fire1"; // ¹ß»ç¸¦ À§ÇÑ ÀÔ·Â ¹öÆ° ÀÌ¸§
-    public string reloadButtonName = "Reload"; // ÀçÀåÀüÀ» À§ÇÑ ÀÔ·Â ¹öÆ° ÀÌ¸§
+    public string moveAxisName = "Vertical"; //ì•ë’¤ ì›€ì§ì„ì„ ìœ„í•œ ì…ë ¥ì¶• ì´ë¦„
+    public string rotareAxisName = "Horizontal"; //ì¢Œìš° íšŒì „ì„ ìœ„í•œ ì…ë ¥ì¶• ì´ë¦„
+    public string fireButtonName = "Fire1"; // ë°œì‚¬ë¥¼ ìœ„í•œ ì…ë ¥ ë²„íŠ¼ ì´ë¦„
+    public string reloadButtonName = "Reload"; // ì¬ì¥ì „ì„ ìœ„í•œ ì…ë ¥ ë²„íŠ¼ ì´ë¦„
 
-    public float move { get; private set; } // °¨ÁöµÈ ¿òÁ÷ÀÓ ÀÔ·Â°ª
-    public float rotate { get; private set; }// °¨ÁöµÈ È¸Àü ÀÔ·Â°ª
-    public bool fire { get; private set; }// °¨ÁöµÈ ¹ß»ç ÀÔ·Â°ª
-    public bool reload { get; private set; }// °¨ÁöµÈ ÀçÀåÀü ÀÔ·Â°ª
+    public float move { get; private set; } // ê°ì§€ëœ ì›€ì§ì„ ì…ë ¥ê°’
+    public float rotate { get; private set; }// ê°ì§€ëœ íšŒì „ ì…ë ¥ê°’
+    public bool fire { get; private set; }// ê°ì§€ëœ ë°œì‚¬ ì…ë ¥ê°’
+    public bool reload { get; private set; }// ê°ì§€ëœ ì¬ì¥ì „ ì…ë ¥ê°’
 
 
     // Update is called once per frame
     void Update()
     {
-        //°ÔÀÓ¿À¹ö »óÅÂ¿¡¼­´Â »ç¿ëÀÚ ÀÔ·ÂÀ» °¨ÁöÇÏÁö ¾ÊÀ½
+        //ê²Œì„ì˜¤ë²„ ìƒíƒœì—ì„œëŠ” ì‚¬ìš©ì ì…ë ¥ì„ ê°ì§€í•˜ì§€ ì•ŠìŒ
     if(Gamemanager.instance!=null && Gamemanager.instance.isGameover)
         {
             move = 0;
@@ -27,14 +27,14 @@ public class PlayerInput : MonoBehaviour
             reload = false;
             return;
         }
-    // ÇÁ·ÎÆÛÆ¼**
-        //move¿¡ °üÇÑ ÀÔ·Â °¨Áö
+    // í”„ë¡œí¼í‹°**
+        //moveì— ê´€í•œ ì…ë ¥ ê°ì§€
         move = Input.GetAxis(moveAxisName);
-        //rotate ¿¡ °ü¶õ ÀÔ·Â°¨Áö
+        //rotate ì— ê´€ë€ ì…ë ¥ê°ì§€
         rotate = Input.GetAxis(rotareAxisName);
-        //fire ¿¡ °üÇÑ ÀÔ·Â°¨Áö
+        //fire ì— ê´€í•œ ì…ë ¥ê°ì§€
         fire = Input.GetButton(fireButtonName);
-        //reload¿¡ °üÇÑ ÀÔ·Â°¨Áö
+        //reloadì— ê´€í•œ ì…ë ¥ê°ì§€
         reload = Input.GetButtonDown(reloadButtonName);
     }
 
