@@ -44,7 +44,7 @@ public class PlayerShooter : MonoBehaviour
         if(gun.Reload())
         {
             // 재장전 성공 시에만 재장전 애니메이션 재생
-            playerAnimator.SetTrigger("Reloda");
+            playerAnimator.SetTrigger("Reload");
         }
     }
 
