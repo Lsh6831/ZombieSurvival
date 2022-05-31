@@ -23,6 +23,7 @@ public class ZombieSpawner : MonoBehaviour
 
         //좀비를 모두 물리친 경우 다음 스폰 실행
         if (zombies.Count <= 0)
+        //리스트의 크기
         {
             SpawnWave();
         }
@@ -53,6 +54,7 @@ public class ZombieSpawner : MonoBehaviour
             //좀비 생성 처리 실행
             CreateZombie();
         }
+        // spawnCount 만큼 반복 실행
 
     }
 
